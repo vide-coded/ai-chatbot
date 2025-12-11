@@ -1,0 +1,17 @@
+{
+  "name": "chatbot",
+  "version": "0.1.0",
+  "description": "basic ai chatbot",
+  "type": "module",
+  "scripts": {
+    "dev": "echo \"Development scripts will be added by agents\"",
+    "build": "echo \"Build scripts will be added by agents\"",
+    "test": "echo \"Test scripts will be added by agents\""
+  },
+  "keywords": [
+    "saas",
+    "ai-powered"
+  ],
+  "author": "",
+  "license": "MIT"
+}
