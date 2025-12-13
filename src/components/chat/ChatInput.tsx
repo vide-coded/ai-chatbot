@@ -3,6 +3,7 @@ import { type KeyboardEvent, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import { ModelSelector } from "./ModelSelector";
 
 interface ChatInputProps {
 	onSend: (message: string) => void;
@@ -73,15 +74,18 @@ export function ChatInput({
 						<Send className="w-4 h-4" />
 					</Button>
 				</div>
-				<p className="text-xs text-muted-foreground mt-2 px-1">
-					Press{" "}
-					<kbd className="px-1 py-0.5 bg-muted rounded text-xs">Enter</kbd> to
-					send,{" "}
-					<kbd className="px-1 py-0.5 bg-muted rounded text-xs">
-						Shift + Enter
-					</kbd>{" "}
-					for new line
-				</p>
+				<div className="flex items-center justify-between mt-2 px-1">
+					<p className="text-xs text-muted-foreground">
+						Press{" "}
+						<kbd className="px-1 py-0.5 bg-muted rounded text-xs">Enter</kbd> to
+						send,{" "}
+						<kbd className="px-1 py-0.5 bg-muted rounded text-xs">
+							Shift + Enter
+						</kbd>{" "}
+						for new line
+					</p>
+					<ModelSelector />
+				</div>
 			</div>
 		</div>
 	);

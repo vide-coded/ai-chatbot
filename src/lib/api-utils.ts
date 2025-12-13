@@ -3,6 +3,7 @@ import { z } from "zod";
 // Request validation schema
 export const chatRequestSchema = z.object({
 	conversationId: z.string().min(1, "Conversation ID is required"),
+	model: z.string().optional().default("gemini-2.0-flash"),
 	messages: z
 		.array(
 			z.object({

@@ -3,12 +3,14 @@ import { useAddMessage } from "./queries";
 
 interface UseTanStackChatOptions {
 	conversationId: string;
+	model?: string;
 	onStreamComplete?: (fullResponse: string) => void;
 	onError?: (error: Error) => void;
 }
 
 export function useTanStackChat({
 	conversationId,
+	model = "gemini-2.0-flash",
 	onStreamComplete,
 	onError,
 }: UseTanStackChatOptions) {
@@ -18,6 +20,7 @@ export function useTanStackChat({
 		connection: fetchServerSentEvents("/api/chat"),
 		body: {
 			conversationId,
+			model,
 		},
 		onFinish: async (message) => {
 			// Save assistant message to IndexedDB when complete
