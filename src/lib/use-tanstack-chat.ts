@@ -1,14 +1,17 @@
 import { fetchServerSentEvents, useChat } from "@tanstack/ai-react";
+import { DEFAULT_MODEL } from "./models";
 import { useAddMessage } from "./queries";
 
 interface UseTanStackChatOptions {
 	conversationId: string;
+	model?: string;
 	onStreamComplete?: (fullResponse: string) => void;
 	onError?: (error: Error) => void;
 }
 
 export function useTanStackChat({
 	conversationId,
+	model = DEFAULT_MODEL,
 	onStreamComplete,
 	onError,
 }: UseTanStackChatOptions) {
@@ -18,6 +21,7 @@ export function useTanStackChat({
 		connection: fetchServerSentEvents("/api/chat"),
 		body: {
 			conversationId,
+			model,
 		},
 		onFinish: async (message) => {
 			// Save assistant message to IndexedDB when complete

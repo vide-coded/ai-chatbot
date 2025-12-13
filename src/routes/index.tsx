@@ -21,7 +21,8 @@ import { useTanStackChat } from "@/lib/use-tanstack-chat";
 export const Route = createFileRoute("/")({ component: App });
 
 function App() {
-	const { activeConversationId, isSidebarOpen } = useStore(chatStore);
+	const { activeConversationId, isSidebarOpen, selectedModel } =
+		useStore(chatStore);
 	const isOnline = useOnlineStatus();
 	const [dismissedError, setDismissedError] = useState(false);
 	const [mounted, setMounted] = useState(false);
@@ -48,6 +49,7 @@ function App() {
 		error: streamError,
 	} = useTanStackChat({
 		conversationId: activeConversationId || "",
+		model: selectedModel,
 		onStreamComplete: async (fullResponse) => {
 			// Generate title from first message if conversation is new
 			if (activeConversationId && messages.length === 0) {

@@ -6,6 +6,7 @@ import {
 	checkRateLimit,
 	getSessionId,
 } from "../lib/api-utils";
+import { DEFAULT_MODEL } from "../lib/models";
 
 export const Route = createFileRoute("/api/chat")({
 	server: {
@@ -53,7 +54,7 @@ export const Route = createFileRoute("/api/chat")({
 						);
 					}
 
-					const { messages } = validationResult.data;
+					const { messages, model } = validationResult.data;
 
 					// Check for API key
 					const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
@@ -78,7 +79,7 @@ export const Route = createFileRoute("/api/chat")({
 					// Stream the response with TanStack AI
 					const stream = chat({
 						adapter: gemini(),
-						model: "gemini-2.0-flash",
+						model: model || DEFAULT_MODEL,
 						messages: messages.map((msg) => ({
 							role: msg.role,
 							content: msg.content,
