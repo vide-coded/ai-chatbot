@@ -1,4 +1,5 @@
 import { fetchServerSentEvents, useChat } from "@tanstack/ai-react";
+import { DEFAULT_MODEL } from "./models";
 import { useAddMessage } from "./queries";
 
 interface UseTanStackChatOptions {
@@ -10,7 +11,7 @@ interface UseTanStackChatOptions {
 
 export function useTanStackChat({
 	conversationId,
-	model = "gemini-2.0-flash",
+	model = DEFAULT_MODEL,
 	onStreamComplete,
 	onError,
 }: UseTanStackChatOptions) {

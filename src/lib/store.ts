@@ -1,4 +1,5 @@
 import { Store } from "@tanstack/store";
+import { AVAILABLE_MODEL_IDS, DEFAULT_MODEL } from "./models";
 
 interface ChatState {
 	activeConversationId: string | null;
@@ -10,7 +11,7 @@ interface ChatState {
 export const chatStore = new Store<ChatState>({
 	activeConversationId: null,
 	isSidebarOpen: true,
-	selectedModel: "gemini-2.0-flash",
+	selectedModel: DEFAULT_MODEL,
 });
 
 // Store actions
@@ -52,7 +53,8 @@ if (typeof window !== "undefined") {
 	}
 
 	const savedModel = localStorage.getItem("selectedModel");
-	if (savedModel) {
+	// Validate that the saved model is one of the available models
+	if (savedModel && AVAILABLE_MODEL_IDS.includes(savedModel)) {
 		chatActions.setSelectedModel(savedModel);
 	}
 

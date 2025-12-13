@@ -1,16 +1,8 @@
 import { useStore } from "@tanstack/react-store";
 import { useId } from "react";
+import { AVAILABLE_MODELS } from "@/lib/models";
 import { chatActions, chatStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
-
-// Available Gemini models from TanStack AI Gemini package
-const AVAILABLE_MODELS = [
-	{ id: "gemini-2.0-flash", name: "Gemini 2.0 Flash" },
-	{ id: "gemini-2.0-flash-lite", name: "Gemini 2.0 Flash Lite" },
-	{ id: "gemini-2.5-flash", name: "Gemini 2.5 Flash" },
-	{ id: "gemini-2.5-flash-lite", name: "Gemini 2.5 Flash Lite" },
-	{ id: "gemini-2.5-pro", name: "Gemini 2.5 Pro" },
-];
 
 export function ModelSelector() {
 	const selectId = useId();
