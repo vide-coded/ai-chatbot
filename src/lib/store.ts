@@ -64,8 +64,6 @@ if (typeof window !== "undefined") {
 			localStorage.removeItem("activeConversationId");
 		}
 
-		if (state.selectedModel) {
-			localStorage.setItem("selectedModel", state.selectedModel);
-		}
+		localStorage.setItem("selectedModel", state.selectedModel);
 	});
 }
