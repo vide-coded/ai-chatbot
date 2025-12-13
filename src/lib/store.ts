@@ -52,7 +52,7 @@ if (typeof window !== "undefined") {
 		chatActions.setActiveConversation(savedConversationId);
 	}
 
-	const savedModel = localStorage.getItem("selectedModel");
+	const savedModel = localStorage.getItem("selectedModel") as typeof AVAILABLE_MODEL_IDS[number] | null;
 	// Validate that the saved model is one of the available models
 	if (savedModel && AVAILABLE_MODEL_IDS.includes(savedModel)) {
 		chatActions.setSelectedModel(savedModel);
