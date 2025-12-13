@@ -1,16 +1,12 @@
 import { z } from "zod";
-import { AVAILABLE_MODEL_IDS, DEFAULT_MODEL } from "./models";
+import { AVAILABLE_MODEL_IDS } from "./models";
 
 // Request validation schema
 export const chatRequestSchema = z.object({
-	conversationId: z.string().min(1, "Conversation ID is required"),
-	model: z
-		.string()
-		.optional()
-		.default(DEFAULT_MODEL)
-		.refine((val) => AVAILABLE_MODEL_IDS.includes(val), {
-			message: "Invalid model ID",
-		}),
+	data: z.object({
+		conversationId: z.string().min(1, "Conversation ID is required"),
+		model: z.enum(AVAILABLE_MODEL_IDS),
+	}),
 	messages: z
 		.array(
 			z.object({

@@ -54,7 +54,10 @@ export const Route = createFileRoute("/api/chat")({
 						);
 					}
 
-					const { messages, model } = validationResult.data;
+					const {
+						messages,
+						data: { model },
+					} = validationResult.data;
 
 					// Check for API key
 					const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
@@ -71,7 +74,9 @@ export const Route = createFileRoute("/api/chat")({
 						);
 					}
 
-					const { conversationId } = validationResult.data;
+					const {
+						data: { conversationId },
+					} = validationResult.data;
 
 					// Set the API key in environment for the adapter
 					process.env.GEMINI_API_KEY = apiKey;

@@ -27,6 +27,8 @@ function App() {
 	const [dismissedError, setDismissedError] = useState(false);
 	const [mounted, setMounted] = useState(false);
 
+	console.log("activeConversationId : ", activeConversationId);
+
 	// Fetch conversations
 	const { data: conversations = [], isLoading: conversationsLoading } =
 		useConversations();
